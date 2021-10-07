@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const getPath_1 = __importDefault(require("./getPath"));
+const getPath_1 = __importDefault(require("../getPath"));
 exports.default = (req, res, routes) => __awaiter(void 0, void 0, void 0, function* () {
     if (req.url === undefined || req.method !== 'POST') {
         res.writeHead(404);

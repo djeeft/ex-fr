@@ -1,6 +1,6 @@
 import {IncomingMessage, ServerResponse} from "http";
-import getPath from "./getPath";
-import {RoutesDict} from "./routes";
+import getPath from "../getPath";
+import RoutesDict from "../routesDict";
 
 export default async (req: IncomingMessage, res: ServerResponse, routes: RoutesDict) => {
     if (req.url === undefined || req.method !== 'POST') {

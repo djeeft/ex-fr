@@ -1,5 +1,5 @@
 import { ServerOptions } from "https";
-import { RoutesDict } from "./routes";
+import RoutesDict from "../routesDict";
 declare const _default: (options: ServerOptions, hostport: {
     host: string;
     port: number;
