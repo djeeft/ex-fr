@@ -13,7 +13,7 @@ export function GenerateRandomHash() {
     });
 }
 
-export function Index(data: string) {
+export function generateHash(data: string) {
     return new Promise<string>((resolve, reject) => {
         cryptoAsync.hash('sha512', Buffer.alloc(data.length, data), (err, hash) => {
             if (err !== undefined) {
