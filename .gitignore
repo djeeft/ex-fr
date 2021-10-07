@@ -307,3 +307,8 @@ Temporary Items
 # Ignore redis binary dump (dump.rdb) files
 
 *.rdb
+
+
+
+lib
+types
