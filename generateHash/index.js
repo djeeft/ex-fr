@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GenerateUniqueHash = exports.Index = exports.GenerateRandomHash = void 0;
+exports.GenerateUniqueHash = exports.generateHash = exports.GenerateRandomHash = void 0;
 const crypto_async_1 = __importDefault(require("@ronomon/crypto-async"));
 const randomstring_1 = __importDefault(require("randomstring"));
 function GenerateRandomHash() {
@@ -28,7 +28,7 @@ function GenerateRandomHash() {
     });
 }
 exports.GenerateRandomHash = GenerateRandomHash;
-function Index(data) {
+function generateHash(data) {
     return new Promise((resolve, reject) => {
         crypto_async_1.default.hash('sha512', Buffer.alloc(data.length, data), (err, hash) => {
             if (err !== undefined) {
@@ -40,7 +40,7 @@ function Index(data) {
         });
     });
 }
-exports.Index = Index;
+exports.generateHash = generateHash;
 function GenerateUniqueHash(checkUniqueFunc, attemptsCount = 10) {
     return () => __awaiter(this, void 0, void 0, function* () {
         for (let i = 0; i < attemptsCount; ++i) {
