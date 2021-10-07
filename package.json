@@ -1,7 +1,7 @@
 {
-  "name": "ex-fr",
+  "name": "@space_creator/ex-fr",
   "author": "Space Creator Team",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "./lib/app.js",
   "types": "./types/app.d.ts",
