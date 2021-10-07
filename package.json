@@ -8,8 +8,16 @@
   "scripts": {
     "build": "tsc"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sc-atlas/ex-fr.git"
+  },
   "keywords": [],
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sc-atlas/ex-fr/issues"
+  },
+  "homepage": "https://github.com/sc-atlas/ex-fr",
   "devDependencies": {
     "@types/json-bigint": "^1.0.1",
     "@types/node": "^16.10.3",
