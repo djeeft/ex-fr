@@ -6,6 +6,9 @@ export default <Type>(data: string, res: ServerResponse, dataObj: Type, testObjF
     try {
         dataObj = JSONParse(data);
         dataObj = castToObjectNoUndef(dataObj);
+        if (dataObj === undefined) {
+            throw new Error("undefined!");
+        }
         return testObjFunvc(dataObj);
     } catch (e) {
         if (e === 400) {
