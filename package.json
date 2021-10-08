@@ -3,8 +3,6 @@
   "author": "Space Creator Team",
   "version": "0.1.7",
   "description": "",
-  "main": "./lib/app.js",
-  "types": "./types/app.d.ts",
   "scripts": {
     "build": "tsc"
   },
