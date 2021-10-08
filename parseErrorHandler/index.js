@@ -9,6 +9,9 @@ exports.default = (data, res, dataObj, testObjFunvc) => {
     try {
         dataObj = (0, JSONParse_1.default)(data);
         dataObj = (0, castTo_1.castToObjectNoUndef)(dataObj);
+        if (dataObj === undefined) {
+            throw new Error("undefined!");
+        }
         return testObjFunvc(dataObj);
     }
     catch (e) {
