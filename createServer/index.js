@@ -14,9 +14,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const https_1 = __importDefault(require("https"));
 const serverMain_1 = __importDefault(require("../serverMain"));
-exports.default = (options, hostport, routes, onServerRun) => {
+exports.default = (options, hostport, routes, onServerRun, onServerExit) => {
     const server = https_1.default.createServer(options, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         yield (0, serverMain_1.default)(req, res, routes);
     }));
     server.listen(hostport.port, hostport.host, onServerRun);
+    if (onServerExit)
+        process.on('exit', onServerExit);
 };
