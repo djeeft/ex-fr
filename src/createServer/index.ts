@@ -10,15 +10,19 @@ export default (options: ServerOptions, hostport: { host?: string, port?: number
     });
     server.listen(hostport.port, hostport.host, onServerRun);
     process.on('uncaughtException', () => {
+        console.log("uncaughtException");
         terminate(server, 1);
     });
     process.on('unhandledRejection', () => {
+        console.log("unhandledRejection");
         terminate(server, 1);
     });
     process.on('SIGTERM', () => {
+        console.log("SIGTERM");
         terminate(server, 0);
     });
     process.on('SIGINT', () => {
+        console.log("SIGINT");
         terminate(server, 0);
     });
 }

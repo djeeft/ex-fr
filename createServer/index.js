@@ -22,14 +22,18 @@ exports.default = (options, hostport, routes, onServerRun) => {
     server.listen(hostport.port, hostport.host, onServerRun);
     process.on('uncaughtException', () => {
         (0, terminate_1.default)(server, 1);
+        console.log("uncaughtException");
     });
     process.on('unhandledRejection', () => {
         (0, terminate_1.default)(server, 1);
+        console.log("unhandledRejection");
     });
     process.on('SIGTERM', () => {
         (0, terminate_1.default)(server, 0);
+        console.log("SIGTERM");
     });
     process.on('SIGINT', () => {
         (0, terminate_1.default)(server, 0);
+        console.log("SIGINT");
     });
 };
