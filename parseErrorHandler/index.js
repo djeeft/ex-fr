@@ -25,6 +25,6 @@ exports.default = (data, res, dataObj, testObjFunvc) => {
             res.writeHead(500);
         }
         res.end();
-        return undefined;
+        throw new Error("parse error");
     }
 };

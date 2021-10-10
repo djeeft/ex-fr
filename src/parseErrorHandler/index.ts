@@ -2,7 +2,7 @@ import {IncomingMessage, ServerResponse} from "http";
 import {castToObjectNotUndef} from "../castTo";
 import JSONParse from "../JSONParse";
 
-export default <Type>(data: string, res: ServerResponse, dataObj: Type, testObjFunvc: (dataObj: Type) => Type): Type | undefined => {
+export default <Type>(data: string, res: ServerResponse, dataObj: Type, testObjFunvc: (d_o: Type) => Type): Type | undefined => {
     try {
         dataObj = JSONParse(data);
         dataObj = castToObjectNotUndef(dataObj);
@@ -19,6 +19,6 @@ export default <Type>(data: string, res: ServerResponse, dataObj: Type, testObjF
             res.writeHead(500);
         }
         res.end();
-        return undefined;
+        throw new Error("parse error");
     }
 }
