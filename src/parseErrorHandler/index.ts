@@ -1,11 +1,11 @@
 import {IncomingMessage, ServerResponse} from "http";
-import {castToObjectNoUndef} from "../castTo";
+import {castToObjectNotUndef} from "../castTo";
 import JSONParse from "../JSONParse";
 
 export default <Type>(data: string, res: ServerResponse, dataObj: Type, testObjFunvc: (dataObj: Type) => Type): Type | undefined => {
     try {
         dataObj = JSONParse(data);
-        dataObj = castToObjectNoUndef(dataObj);
+        dataObj = castToObjectNotUndef(dataObj);
         if (dataObj === undefined) {
             throw new Error("undefined!");
         }

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.castToBigintOrStringArray = exports.castToBigintArray = exports.castToObjectNoUndef = exports.castToObject = exports.castToStringUndef = exports.castToString = exports.castToBigintNotUndef = exports.castToBigint = void 0;
+exports.castToBigintOrStringArray = exports.castToBigintArray = exports.castToObjectNotUndef = exports.castToObject = exports.castToStringNotUndef = exports.castToString = exports.castToBigintNotUndef = exports.castToBigint = void 0;
 function castToBigint(obj) {
     if (obj !== undefined) {
         castToBigintNotUndef(obj);
@@ -20,32 +20,32 @@ function castToBigintNotUndef(obj) {
 exports.castToBigintNotUndef = castToBigintNotUndef;
 function castToString(obj) {
     if (obj !== undefined) {
-        castToStringUndef(obj);
+        castToStringNotUndef(obj);
     }
     return obj;
 }
 exports.castToString = castToString;
-function castToStringUndef(obj) {
+function castToStringNotUndef(obj) {
     if (typeof obj !== "string") {
         throw 422;
     }
     return obj;
 }
-exports.castToStringUndef = castToStringUndef;
+exports.castToStringNotUndef = castToStringNotUndef;
 function castToObject(obj) {
     if (obj !== undefined) {
-        castToObjectNoUndef(obj);
+        castToObjectNotUndef(obj);
     }
     return obj;
 }
 exports.castToObject = castToObject;
-function castToObjectNoUndef(obj) {
+function castToObjectNotUndef(obj) {
     if (typeof obj !== "object") {
         throw 422;
     }
     return obj;
 }
-exports.castToObjectNoUndef = castToObjectNoUndef;
+exports.castToObjectNotUndef = castToObjectNotUndef;
 function castToBigintArray(obj) {
     if (obj !== undefined) {
         if (Array.isArray(obj)) {

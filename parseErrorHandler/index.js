@@ -8,7 +8,7 @@ const JSONParse_1 = __importDefault(require("../JSONParse"));
 exports.default = (data, res, dataObj, testObjFunvc) => {
     try {
         dataObj = (0, JSONParse_1.default)(data);
-        dataObj = (0, castTo_1.castToObjectNoUndef)(dataObj);
+        dataObj = (0, castTo_1.castToObjectNotUndef)(dataObj);
         if (dataObj === undefined) {
             throw new Error("undefined!");
         }

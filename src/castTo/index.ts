@@ -17,12 +17,12 @@ export function castToBigintNotUndef(obj: any): bigint {
 
 export function castToString(obj: any): string | undefined {
     if (obj !== undefined) {
-        castToStringUndef(obj);
+        castToStringNotUndef(obj);
     }
     return obj;
 }
 
-export function castToStringUndef(obj: any): string {
+export function castToStringNotUndef(obj: any): string {
     if (typeof obj !== "string") {
         throw 422;
     }
@@ -31,12 +31,12 @@ export function castToStringUndef(obj: any): string {
 
 export function castToObject(obj: any): any | undefined {
     if (obj !== undefined) {
-        castToObjectNoUndef(obj);
+        castToObjectNotUndef(obj);
     }
     return obj;
 }
 
-export function castToObjectNoUndef<Type>(obj: any): Type {
+export function castToObjectNotUndef<Type>(obj: any): Type {
     if (typeof obj !== "object") {
         throw 422;
     }
