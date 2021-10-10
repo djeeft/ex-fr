@@ -1,7 +1,7 @@
 {
   "name": "@space_creator/ex-fr",
   "author": "Space Creator Team",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "",
   "scripts": {
     "build": "tsc"
