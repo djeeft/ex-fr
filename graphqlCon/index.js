@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
-const JSONStringify_1 = __importDefault(require("../JSONStringify"));
 const https_1 = __importDefault(require("https"));
 const agent = new https_1.default.Agent({
     rejectUnauthorized: process.env.NODE_ENV === "production"
@@ -29,7 +28,7 @@ exports.default = (data) => __awaiter(void 0, void 0, void 0, function* () {
     if (typeof process.env.GRAPHQL_URL !== "string")
         throw { error: "Can't find env.GRAPHQL_URL", code: 1 };
     try {
-        const res = yield pclClient.post(process.env.GRAPHQL_URL, (0, JSONStringify_1.default)(data), { headers: { 'Content-Type': 'application/json' } });
+        const res = yield pclClient.post(process.env.GRAPHQL_URL, data);
         return res.data;
     }
     catch (e) {
