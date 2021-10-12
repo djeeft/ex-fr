@@ -18,10 +18,10 @@ const agent = new https_1.default.Agent({
     rejectUnauthorized: process.env.NODE_ENV === "production"
 });
 const pclClient = axios_1.default.create({
-    responseType: "text",
+    responseType: "json",
     timeout: 10000,
     headers: {
-        Accept: "text"
+        Accept: "application/json"
     }, httpsAgent: agent
 });
 exports.default = (data) => __awaiter(void 0, void 0, void 0, function* () {

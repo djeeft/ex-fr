@@ -7,10 +7,10 @@ const agent = new https.Agent({
 });
 
 const pclClient = axios.create({
-    responseType: "text",
+    responseType: "json",
     timeout: 10000,
     headers: {
-        Accept: "text"
+        Accept: "application/json"
     }, httpsAgent: agent
 });
 
