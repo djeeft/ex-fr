@@ -13,12 +13,12 @@ const pclClient = axios.create({
     }, httpsAgent: agent
 });
 
-export default async (data: string) => {
+export default async <Type>(data: string): Promise<Type & { errors?: { message: string, locations: { line: number, column: number }[] }[] }> => {
     if (typeof process.env.GRAPHQL_URL !== "string")
         throw  {error: "Can't find env.GRAPHQL_URL", code: 1};
     try {
-        const res = await pclClient.post(process.env.GRAPHQL_URL, data, {headers:{'Content-Type':'application/graphql'}});
-        return res.data;
+        const res = await pclClient.post(process.env.GRAPHQL_URL, data, {headers: {'Content-Type': 'application/graphql'}});
+        return res.data as any;
     } catch (e: any) {
         if (e === 400)
             throw  {error: "Bad input data", code: 2};
