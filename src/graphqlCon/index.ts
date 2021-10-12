@@ -18,7 +18,7 @@ export default async (data: string) => {
     if (typeof process.env.GRAPHQL_URL !== "string")
         throw  {error: "Can't find env.GRAPHQL_URL", code: 1};
     try {
-        const res = await pclClient.post(process.env.GRAPHQL_URL, data, {headers:{'Content-Type':'application/json'}});
+        const res = await pclClient.post(process.env.GRAPHQL_URL, data, {headers:{'Content-Type':'application/graphql'}});
         return res.data;
     } catch (e: any) {
         if (e === 400)

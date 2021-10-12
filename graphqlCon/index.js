@@ -28,7 +28,7 @@ exports.default = (data) => __awaiter(void 0, void 0, void 0, function* () {
     if (typeof process.env.GRAPHQL_URL !== "string")
         throw { error: "Can't find env.GRAPHQL_URL", code: 1 };
     try {
-        const res = yield pclClient.post(process.env.GRAPHQL_URL, data, { headers: { 'Content-Type': 'application/json' } });
+        const res = yield pclClient.post(process.env.GRAPHQL_URL, data, { headers: { 'Content-Type': 'application/graphql' } });
         return res.data;
     }
     catch (e) {
