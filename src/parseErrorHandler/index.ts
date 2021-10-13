@@ -1,8 +1,8 @@
-import {IncomingMessage, ServerResponse} from "http";
+import {ServerResponse} from "http";
 import {castToObjectNotUndef} from "../castTo";
 import JSONParse from "../JSONParse";
 
-export default <Type>(data: string, res: ServerResponse, dataObj: Type, testObjFunc: (d_o: Type) => Type): Type => {
+export default <InType, OutType>(data: string, res: ServerResponse, dataObj: InType, testObjFunc: (d_o: InType) => OutType): OutType => {
     try {
         dataObj = JSONParse(data);
         dataObj = castToObjectNotUndef(dataObj);

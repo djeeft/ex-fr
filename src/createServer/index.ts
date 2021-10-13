@@ -1,5 +1,4 @@
-import https from "https";
-import {ServerOptions} from "https";
+import https, {ServerOptions} from "https";
 import serverMain from "../serverMain";
 import RoutesDict from "../routesDict";
 import terminate from "../terminate";
