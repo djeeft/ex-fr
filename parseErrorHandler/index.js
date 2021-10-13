@@ -5,9 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const castTo_1 = require("../castTo");
 const JSONParse_1 = __importDefault(require("../JSONParse"));
-exports.default = (data, res, dataObj, testObjFunc) => {
+exports.default = (data, res, testObjFunc) => {
     try {
-        dataObj = (0, JSONParse_1.default)(data);
+        let dataObj = (0, JSONParse_1.default)(data);
         dataObj = (0, castTo_1.castToObjectNotUndef)(dataObj);
         if (dataObj === undefined) {
             throw new Error("undefined!");
