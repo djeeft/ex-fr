@@ -28,6 +28,7 @@
     "@types/node": "^16.10.3",
     "@types/randomstring": "^1.1.7",
     "@types/ronomon__crypto-async": "^2.0.0",
+    "@space_creator/sc-graphql-typescript": "^0.0.3",
     "axios": "^0.22.0",
     "json-bigint": "^1.0.0",
     "randomstring": "^1.2.1"
