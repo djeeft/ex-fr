@@ -1,7 +1,7 @@
 {
   "name": "@space_creator/ex-fr",
   "author": "Space Creator Team",
-  "version": "0.1.31",
+  "version": "0.1.32",
   "description": "",
   "scripts": {
     "build": "rmdir dist /S/Q && tsc && xcopy dist . /E/H/C/I/Y"
