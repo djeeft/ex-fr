@@ -1,2 +1,2 @@
-declare const _default: (data: any) => string;
+declare const _default: (data: any, name_for_err: string) => string;
 export default _default;

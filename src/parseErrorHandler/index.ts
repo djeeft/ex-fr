@@ -2,23 +2,27 @@ import {ServerResponse} from "http";
 import {castToObjectNotUndef} from "../castTo";
 import JSONParse from "../JSONParse";
 
-export default <InType, OutType>(data: string, res: ServerResponse, testObjFunc: (d_o: InType) => OutType): OutType => {
+export default <InType, OutType>(data: string, root_is_object: boolean, res: ServerResponse, testObjFunc: (d_o: InType) => OutType): OutType => {
     try {
-        let dataObj: InType = JSONParse(data);
-        dataObj = castToObjectNotUndef(dataObj);
-        if (dataObj === undefined) {
-            throw new Error("undefined!");
-        }
+        let dataObj: InType = JSONParse(data, "Input");
+        if (root_is_object)
+            dataObj = castToObjectNotUndef(dataObj, "Input");
         return testObjFunc(dataObj);
-    } catch (e) {
-        if (e === 400) {
-            res.writeHead(400);
-        } else if (e === 422) {
-            res.writeHead(422);
+    } catch (e: any) {
+        if (typeof e === "object" && e !== null) {
+            if (typeof e.c === "number") {
+                if (typeof e.d === "string") {
+                    res.writeHead(e.c, e.d);
+                } else {
+                    res.writeHead(e.c);
+                }
+            } else {
+                res.writeHead(500);
+            }
         } else {
             res.writeHead(500);
         }
         res.end();
-        throw new Error("parse error");
+        throw {c: 400, d: "Input parse error"};
     }
 }

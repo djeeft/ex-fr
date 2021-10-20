@@ -1,49 +1,73 @@
-export function castToBigint(obj: any): bigint | undefined {
+export function castToBigint(obj: any, name_for_err: string): bigint | undefined {
     if (obj !== undefined) {
-        castToBigintNotUndef(obj);
+        return castToBigintNotUndef(obj, name_for_err);
     }
     return obj;
 }
 
-export function castToBigintNotUndef(obj: any): bigint {
+export function castToBigintNotUndef(obj: any, name_for_err: string): bigint {
     if (typeof obj === "number") {
         obj = BigInt(obj);
     }
     if (typeof obj !== "bigint") {
-        throw 422;
+        throw {c: 422, d: `${name_for_err} is not bigint`};
     }
     return obj;
 }
 
-export function castToString(obj: any): string | undefined {
+export function checkBigintMin(obj: bigint, name_for_err: string, min: bigint): bigint {
+    if (obj >= min)
+        return obj;
+    throw {c: 422, d: `${name_for_err} less than ${min.toString()}`};
+}
+
+export function checkBigintMax(obj: bigint, name_for_err: string, max: bigint): bigint {
+    if (obj <= max)
+        return obj;
+    throw {c: 422, d: `${name_for_err} is greater than ${max.toString()}`};
+}
+
+export function castToString(obj: any, name_for_err: string): string | undefined {
     if (obj !== undefined) {
-        castToStringNotUndef(obj);
+        return castToStringNotUndef(obj, name_for_err);
     }
     return obj;
 }
 
-export function castToStringNotUndef(obj: any): string {
+export function castToStringNotUndef(obj: any, name_for_err: string): string {
     if (typeof obj !== "string") {
-        throw 422;
+        throw {c: 422, d: `${name_for_err} is not string`};
     }
     return obj;
 }
 
-export function castToObject(obj: any): any | undefined {
+export function checkStringMinLength(obj: string, name_for_err: string, min_length: number): string {
+    if (obj.length < min_length)
+        throw {c: 422, d: `${name_for_err} length less than ${min_length}`};
+    return obj;
+}
+
+export function checkStringMaxLength(obj: string, name_for_err: string, max_length: number): string {
+    if (obj.length > max_length)
+        throw {c: 422, d: `${name_for_err} length is greater than ${max_length}`};
+    return obj;
+}
+
+export function castToObject<Type>(obj: any, name_for_err: string): Type | undefined {
     if (obj !== undefined) {
-        castToObjectNotUndef(obj);
+        return castToObjectNotUndef(obj, name_for_err);
     }
     return obj;
 }
 
-export function castToObjectNotUndef<Type>(obj: any): Type {
-    if (typeof obj !== "object") {
-        throw 422;
+export function castToObjectNotUndef<Type>(obj: any, name_for_err: string): Type {
+    if (typeof obj !== "object" || obj === null || obj === undefined) {
+        throw {c: 422, d: `${name_for_err} is not object`};
     }
     return obj;
 }
 
-export function castToBigintArray(obj: any): bigint[] | undefined {
+export function castToBigintArray(obj: any, name_for_err: string): bigint[] | undefined {
     if (obj !== undefined) {
         if (Array.isArray(obj)) {
             obj.forEach(t => {
@@ -51,17 +75,17 @@ export function castToBigintArray(obj: any): bigint[] | undefined {
                     t = BigInt(t);
                 }
                 if (typeof t !== "bigint") {
-                    throw 422;
+                    throw {c: 422, d: `${name_for_err} is not array of bigint`};
                 }
             });
         } else {
-            throw 422;
+            throw {c: 422, d: `${name_for_err} is not array of bigint`};
         }
     }
     return obj;
 }
 
-export function castToBigintOrStringArray(obj: any): bigint[] | string[] | undefined {
+export function castToBigintOrStringArray(obj: any, name_for_err: string): bigint[] | string[] | undefined {
     if (obj !== undefined) {
         let bi = false, str = false;
         if (Array.isArray(obj)) {
@@ -74,14 +98,14 @@ export function castToBigintOrStringArray(obj: any): bigint[] | string[] | undef
                 } else if (typeof t === 'bigint') {
                     bi = true;
                 } else {
-                    throw 422;
+                    throw {c: 422, d: `${name_for_err} is not array of bigint or string`};
                 }
                 if (bi && str) {
-                    throw 422;
+                    throw {c: 422, d: `${name_for_err} is not array of bigint or string`};
                 }
             });
         } else {
-            throw 422;
+            throw {c: 422, d: `${name_for_err} is not array of bigint or string`};
         }
     }
     return obj;

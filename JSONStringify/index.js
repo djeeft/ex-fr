@@ -4,11 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const json_bigint_1 = __importDefault(require("json-bigint"));
-exports.default = (data) => {
+exports.default = (data, name_for_err) => {
     try {
         return json_bigint_1.default.stringify(data);
     }
     catch (err) {
-        throw 400;
+        throw { c: 400, d: `${name_for_err} cannot be converted to json` };
     }
 };
