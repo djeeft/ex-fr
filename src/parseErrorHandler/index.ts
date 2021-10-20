@@ -12,9 +12,9 @@ export default <InType, OutType>(data: string, root_is_object: boolean, res: Ser
         if (typeof e === "object" && e !== null) {
             if (typeof e.c === "number") {
                 if (typeof e.d === "string") {
-                    res.writeHead(e.c, e.d);
+                    res.writeHead(e.c, `Input error: ${e.d}`);
                 } else {
-                    res.writeHead(e.c);
+                    res.writeHead(e.c, "Input error");
                 }
             } else {
                 res.writeHead(500);
